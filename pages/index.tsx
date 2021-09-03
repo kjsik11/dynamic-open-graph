@@ -1,9 +1,4 @@
-/**
- * @template PageComponent
- */
-
-import { useEffect,  useState } from 'react';
-import NextLink from 'next/link'
+import {  useState } from 'react';
 import { Button } from '@components/ui';
 import { GetServerSideProps } from 'next';
 
