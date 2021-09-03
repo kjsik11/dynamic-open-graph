@@ -5,8 +5,12 @@ import { withErrorHandler } from '@utils/with-error-handler';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const {darkMode} = req.query
+    const browserFetcher = puppeteer.createBrowserFetcher();
 
-    const browser = await puppeteer.launch();
+    const revisionInfo = await browserFetcher.download('818858.');
+
+    const browser = await puppeteer.launch({ executablePath: revisionInfo.executablePath })
+
     const page = await browser.newPage();
     //set size
     await page.setViewport({width:2048,height:1170})
