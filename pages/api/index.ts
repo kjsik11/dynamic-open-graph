@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     //set size
     await page.setViewport({width:2048,height:1170})
     
-    await page.goto(`${process.env.NODE_ENV==='development'?'http://localhost:3000':'https://dynamic.jjong.co.kr'}?darkMode=${darkMode}`);
+    await page.goto(`https://dynamic.jjong.co.kr?darkMode=${darkMode}`);
 
     await page.waitForSelector('#image');          // wait for the selector to load
     const element = await page.$('#image');        // declare a variable with an ElementHandle
