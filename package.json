@@ -19,13 +19,15 @@
   "dependencies": {
     "@headlessui/react": "1.4.0",
     "@heroicons/react": "1.0.4",
+    "chrome-aws-lambda": "^10.1.0",
     "classnames": "2.3.1",
     "joi": "17.4.2",
     "ky": "0.28.5",
     "lottie-react": "2.1.0",
     "next": "11.1.2",
     "nprogress": "0.2.0",
-    "puppeteer": "^10.2.0",
+    "puppeteer-core": "^10.2.0",
+    "puppeteer-extra": "^3.1.16-next.149",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "swr": "1.0.0"
@@ -43,6 +45,7 @@
     "postcss": "8.3.6",
     "postcss-focus-visible": "5.0.0",
     "prettier": "2.3.2",
+    "puppeteer": "5",
     "tailwindcss": "2.2.7",
     "typescript": "4.3.4"
   }
