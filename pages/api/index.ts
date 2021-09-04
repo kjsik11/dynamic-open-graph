@@ -9,7 +9,7 @@ import { getOptions } from '@lib/options';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
-    const { darkMode, type, width, height } = req.query;
+    const { darkMode, type, width, height, svgUrl, secondWidth, secondHeight } = req.query;
 
     if (!(type === 'png' || type === 'jpeg')) return res.status(403).end();
 
@@ -19,14 +19,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const page = await browser.newPage();
     //set size
-    await page.setViewport({ width: Number(width), height: Number(height) });
+    await page.setViewport({
+      width: 2048,
+      height: 1280,
+    });
 
     await page.goto(
       `${
         process.env.NODE_ENV === 'production'
           ? 'https://dynamic.jjong.co.kr'
           : 'http://localhost:3000'
-      }?darkMode=${darkMode}&width=${width}&height=${height}`,
+      }?darkMode=${darkMode}&width=${width}&height=${height}&svgUrl=${svgUrl}&secondWidth=${secondWidth}&secondHeight=${secondHeight}`,
     );
 
     await page.waitForSelector('#image'); // wait for the selector to load
