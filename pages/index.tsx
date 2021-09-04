@@ -113,7 +113,7 @@ export default function IndexPage({
           >
             <svg
               version="1.1"
-              className="transition-color duration-300 m-2"
+              className="transition-color duration-300 p-2"
               style={{
                 backgroundColor: darkMode ? 'black' : 'white',
                 width: size.width > 350 ? 350 : size.width,
@@ -177,9 +177,11 @@ export default function IndexPage({
         What is this? This is a service that generates dynamic Open Graph images that you can embed
         in your meta tags. For each keystroke, headless chromium is used to render an HTML page and
         take a screenshot of the result which gets cached. Find out how this works and deploy your
-        own image generator by visiting GitHub. Proudly hosted on ▲Vercel
+        own image generator by visiting GitHub.
       </p>
       <a
+        target="_blank"
+        rel="noreferrer"
         href="https://github.com/kjsik11/dynamic-open-graph"
         className="fixed right-0 top-0 w-20 h-20 github-corner"
         aria-label="View source on GitHub"
