@@ -1,7 +1,7 @@
 {
-  "name": "next-tailwind-ts-template",
-  "version": "4.0.1",
-  "description": "template project",
+  "name": "dynamic-oprngraph",
+  "version": "0.0.2",
+  "description": "make your own opengraph image",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
