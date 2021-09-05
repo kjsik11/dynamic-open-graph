@@ -1,10 +1,13 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 import { GetServerSideProps } from 'next';
 
 // components
 import { Input } from '@components/ui';
 import Toggle from '@components/ui/Toggle';
+
+// libs
+import { useNoti } from '@lib/hooks/use-noti';
 
 interface Props {
   darkMode: 'true' | 'false';
@@ -33,6 +36,8 @@ export default function IndexPage({
     height: Number(secondSizeQuery.height),
   });
   const [svgUrl, setSvgUrl] = useState(svgUrlQuery ?? '');
+
+  const { showNoti } = useNoti();
 
   return (
     <div className={cn('mx-auto max-w-screen-lg p-4 h-full')}>
@@ -76,7 +81,12 @@ export default function IndexPage({
             />
           </div>
           <div className="mt-4">
-            <Input label="2nd-svgurl" value={svgUrl} onChange={(e) => setSvgUrl(e.target.value)} />
+            <Input
+              label="Image url"
+              placeholder="https://sample.png"
+              value={svgUrl}
+              onChange={(e) => setSvgUrl(e.target.value)}
+            />
           </div>
           {svgUrl && (
             <div className="flex space-x-4 sm:space-x-0 sm:flex-col pt-4">
@@ -107,6 +117,7 @@ export default function IndexPage({
         >
           {/*eslint-disable-next-line */}
           <a
+            onClick={() => showNoti({ title: 'starting download...' })}
             className="flex"
             href={`/api?darkMode=${darkMode}&type=${type}&width=${size.width}&height=${size.height}&svgUrl=${svgUrl}&secondWidth=${secondSize.width}&secondHeight=${secondSize.height}`}
             download={`test.${type}`}
@@ -173,7 +184,7 @@ export default function IndexPage({
           </a>
         </div>
       </div>
-      <p className="py-12 text-center px-8">
+      <p className="py-12 text-center px-8 break-all">
         What is this? This is a service that generates dynamic Open Graph images that you can embed
         in your meta tags. For each keystroke, headless chromium is used to render an HTML page and
         take a screenshot of the result which gets cached. Find out how this works and deploy your
